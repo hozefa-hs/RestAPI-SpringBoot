@@ -5,6 +5,7 @@ import com.example.practice.PracticeRESTAPIs.dto.StudentDto;
 import com.example.practice.PracticeRESTAPIs.entity.Student;
 import com.example.practice.PracticeRESTAPIs.repository.StudentRepository;
 import com.example.practice.PracticeRESTAPIs.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -34,7 +35,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<StudentDto> createNewStudent(@RequestBody AddStudentRequestDto addStudentRequestDto) {
+    public ResponseEntity<StudentDto> createNewStudent(@RequestBody @Valid AddStudentRequestDto addStudentRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(studentService.createNewStudent(addStudentRequestDto));
     }
 
